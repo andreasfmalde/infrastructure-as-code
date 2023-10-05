@@ -4,6 +4,10 @@ terraform {
       source  = "hashicorp/azurerm"
       version = "3.75.0"
     }
+    random = {
+      source  = "hashicorp/random"
+      version = "3.1.0"
+    }
   }
   backend "azurerm" {
     resource_group_name  = "afmbackend-rg"
@@ -11,5 +15,10 @@ terraform {
     container_name       = "tfstate"
     key                  = "mod5-web.tfstate"
   }
-    
+
 }
+
+provider "azurerm" {
+  features {}
+}
+  
