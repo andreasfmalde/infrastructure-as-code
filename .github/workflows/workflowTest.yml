@@ -1,0 +1,50 @@
+# Name of the workflow shown in the actions tab
+name: workflowTest
+
+on:
+    # Triggers the workflow on push
+    push:
+        paths:
+            - 'workflow-test/**'
+    
+jobs:
+    #Name of the job
+    workflowJob:
+        #Define the type of runner that the job will run on
+        runs-on: ubuntu-latest
+
+        name: 'workflowTestJob'
+        env:
+            ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+            ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+            ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+            ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+            WORKING_DIR: ./workflow-test
+
+        steps:
+            - uses: actions/checkout@v3
+
+            - name: 'Init Terraform'
+              id: init
+              run: terraform init
+              working-directory: ${{ env.WORKING_DIR }}
+
+            - name: 'Terraform plan'
+              id: plan
+              run: terraform plan -out main.tfplan
+              working-directory: ${{ env.WORKING_DIR }}
+
+            - name: 'Check last commit message'
+              id: commit
+              run: echo "::set-output name=message::$(git log --format=%B -n 1)"
+              working-directory: ${{ env.WORKING_DIR }}
+
+            - name : 'Terraform apply or destroy'
+              id: applydestroy
+              run: |
+                if [[  "${{ steps.commit.outputs.message }}" == *"destroy"* ]]; then
+                  terraform destroy -auto-approve
+                else
+                  terraform apply -auto-approve
+                fi  
+              working-directory: ${{ env.WORKING_DIR }}
