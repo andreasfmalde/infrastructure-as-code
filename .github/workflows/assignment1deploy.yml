@@ -39,7 +39,7 @@ jobs:
               id: applydestroy
               run: |
                 if [[  "${{ steps.commit.outputs.message }}" == *"destroy"* ]]; then
-                  terraform destroy -auto-approve
+                  terraform destroy -var="kv_secret_login_username=${{secrets.KV_USERNAME}}" -var="kv_secret_login_password=${{secrets.KV_PASSWORD}}" -var="security_rule_dest_port=${{secrets.PORT_NR}}" -var="security_rule_source_address=${{secrets.IP_ADDRESS}}" -auto-approve
                 else
                   terraform apply ./main.tfplan
                 fi  
