@@ -41,7 +41,7 @@ jobs:
                 if [[  "${{ steps.commit.outputs.message }}" == *"destroy"* ]]; then
                   terraform destroy -auto-approve
                 else
-                  terraform apply -auto-approve
+                  terraform apply ./main.tfplan -auto-approve
                 fi  
               working-directory: ${{ env.WORKING_DIR }}
 
