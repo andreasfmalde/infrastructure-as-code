@@ -62,13 +62,13 @@ variable "key_permissions" {
 variable "secret_permissions" {
     type = list(string)
     description = "List of secret permissions for key vault"
-    default = ["Get","List","Delete","Set"]
+    default = ["Get","List","Delete","Set","Purge","Delete"]
 }
 
 variable "storage_permissions" {
     type = list(string)
     description = "List of storage permissions for key vault"
-    default = ["Get","List","Delete"] 
+    default = ["Get","List","Delete","Purge"] 
 }
 
 variable "kv_secret_login_name" {
