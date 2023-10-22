@@ -9,6 +9,12 @@ terraform {
       version = "3.5.1"
     }
   }
+  backend "azurerm" {
+    resource_group_name  = "afmbackend-rg"
+    storage_account_name = "afmbackendsam7q5ab"
+    container_name       = "tfstate"
+    key                  = "assignment1.tfstate"
+  }
 }
 
 provider "azurerm" {

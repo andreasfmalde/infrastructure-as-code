@@ -58,4 +58,5 @@ module "VM" {
 
 output "PublicIP" {
   value = module.VM.PublicIP
+  sensitive = true
 }

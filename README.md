@@ -12,3 +12,5 @@ This project will provision and manage a static website on Azure using a storage
 
 ### workflow-test
 This is a test project used for the first setup of github actions for deployment of infrastructure. There are only some simple infrastructure resources being provisioned and managed in this project, like a resource group and a storage account. The important part is the github actions workflow file and the naming convention on the resources based on workspace.
+
+### assignment-1
