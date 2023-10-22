@@ -15,7 +15,7 @@ terraform {
     container_name       = "tfstate"
     key                  = "assignment1.tfstate"
   }
-}
+} 
 
 provider "azurerm" {
   features {
