@@ -44,7 +44,7 @@ variable "OS_StorageAccount_type" {
 variable "source_image_sku" {
   type        = string
   description = "Source Image SKU"
-  default = "20_04_lts"
+  default = "20_04-lts"
 
 }
 variable "keyvalt_SKU" {
