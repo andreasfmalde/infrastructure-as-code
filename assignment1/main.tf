@@ -38,7 +38,7 @@ module "Network" {
     security_rule_dest_port = var.security_rule_dest_port
     security_rule_source_address = var.security_rule_source_address
     security_rule_dest_address = var.security_rule_dest_address
-} 
+}
 
 module "VM" {
     source = "./vm"
