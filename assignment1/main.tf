@@ -7,7 +7,7 @@ module "StorageAccount" {
     sa-account-replication-type = var.sa-account-replication-type
     sa-container-access-type = var.sa-container-access-type
     
-}
+} 
 
 module "KeyVault" {
     source = "./keyvault"
