@@ -35,3 +35,10 @@ jobs:
               id: validate
               run: terraform validate
               working-directory: ${{env.WORKING_DIR}}
+
+            - name: 'Tfsec'
+              id: tfsec
+              uses: aquasecurity/tfsec-action@v1.0.0
+              with:
+                  additional_args: --minimum-severity HIGH
+                  working_directory: ${{env.WORKING_DIR}}
