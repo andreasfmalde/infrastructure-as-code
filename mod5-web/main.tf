@@ -20,10 +20,6 @@ resource "azurerm_storage_account" "sa" {
     index_document = var.index_document
   }
 
-  tags = {
-    environment = "staging"
-  }
-
 }
 
 resource "azurerm_storage_blob" "index_html" {
