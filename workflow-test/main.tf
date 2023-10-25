@@ -19,9 +19,5 @@ resource "azurerm_storage_account" "sa" {
   location                 = var.location
   account_tier             = "Standard"
   account_replication_type = "LRS"
-
-  tags = {
-    environment = "staging"
-  }
 }
  
