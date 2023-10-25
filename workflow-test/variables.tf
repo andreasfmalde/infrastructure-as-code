@@ -1,7 +1,7 @@
 variable "base_name" {
   type        = string
   description = "Base name for the infrastructure deployment"
-  default = "afmwftest"
+  default     = "afmwftest"
 }
 
 variable "location" {
