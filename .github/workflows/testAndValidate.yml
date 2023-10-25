@@ -23,7 +23,7 @@ jobs:
 
             - name: 'Init terraform'
               id: init
-              run: terraform init
+              run: terraform init -backend=false
               working-directory: ${{env.WORKING_DIR}}
 
             - name: 'Terraform format'
@@ -33,5 +33,5 @@ jobs:
 
             - name: 'Terraform validate'
               id: validate
-              run: terraform validate -backend=false
+              run: terraform validate
               working-directory: ${{env.WORKING_DIR}}
