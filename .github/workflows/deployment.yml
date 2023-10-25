@@ -42,7 +42,7 @@ jobs:
               working-directory: ${{ env.WORKING_DIR }}
 
             - name: Terraform apply 
-              if: github.event.inputs.action_type == 'apply'
+              if: github.event.inputs.action_type != 'destroy'
               id: apply
               run: terraform apply plan.tfplan
               working-directory: ${{ env.WORKING_DIR }}
