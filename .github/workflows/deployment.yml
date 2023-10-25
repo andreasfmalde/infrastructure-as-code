@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-        - './workflow-test/**'
+        - 'workflow-test/**'
 
   workflow_dispatch:
     inputs:
